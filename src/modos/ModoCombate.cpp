@@ -39,6 +39,7 @@ void ModoCombate::actualizar() {
         const bool senalAlta = digitalRead((uint8_t)PIN_MODULO_ARRANQUE) == HIGH;
         if (!moduloArranque.enMarcha(senalAlta == ModuloArranqueActivoAlto, millis())) {
             motores.deshabilitar();
+            esperandoInicio = false;
             if (enCombate) {
                 inicioParada = millis();
             }
@@ -59,6 +60,14 @@ void ModoCombate::actualizar() {
             if (combateEmpezado && paradaCorta && estabaEnMarcha) {
                 enCombate = true;
             } else {
+                if (!esperandoInicio) {
+                    esperandoInicio = true;
+                    inicioEspera = millis();
+                }
+                if (millis() - inicioEspera < EsperaInicioCombateMs) {
+                    return;
+                }
+                esperandoInicio = false;
                 empezarCombate();
             }
         }

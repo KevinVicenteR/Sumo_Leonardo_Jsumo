@@ -1,5 +1,7 @@
 #include "movimientos/ControlMovimiento.h"
 
+static_assert(VelocidadCurva <= VelocidadAtaque, "VelocidadCurva debe ser <= VelocidadAtaque");
+
 void ControlMovimiento::ejecutar(const DecisionMovimiento& decision, IMotor& motor, unsigned long ahora) {
     evasion.actualizarSalidaSuave(ahora);
     mando.nuevoCiclo(ahora, rutina.elegida());
