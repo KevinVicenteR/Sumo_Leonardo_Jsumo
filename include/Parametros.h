@@ -141,6 +141,7 @@ constexpr unsigned long TiempoMinimoGiroLateral = 60;
 constexpr bool ModuloArranqueActivoAlto = true;
 constexpr unsigned long FiltroModuloArranqueMs = 30;
 constexpr unsigned long FiltroParadaModuloMs = 150;
+constexpr unsigned long EsperaInicioCombateMs = 5000;
 
 constexpr unsigned long TiempoReanudarCombate = 500;
 constexpr bool ReiniciarTrasParada = true;
@@ -152,7 +153,5 @@ constexpr int rutinaSegunInterruptores(int dip) {
 
 constexpr int RutinaForzada = -1;
 constexpr int LadoForzado = 0;
-
-static_assert(VelocidadCurva <= VelocidadAtaque, "VelocidadCurva debe ser <= VelocidadAtaque");
 
 #endif

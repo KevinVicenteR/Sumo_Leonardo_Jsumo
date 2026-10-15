@@ -28,6 +28,8 @@ private:
     ModuloArranque moduloArranque;
     bool enCombate = false;
     bool combateEmpezado = false;
+    bool esperandoInicio = false;
+    unsigned long inicioEspera = 0;
     unsigned long inicioCombate = 0;
     unsigned long inicioParada = 0;
 };
